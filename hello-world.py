@@ -1,5 +1,5 @@
-hw = "hello world"
-print(hw.upper())
+hw = "HELLO WORLD"
+print(hw.lower())
 
-def returnFour():
-	return 4
+def returnFiveInstead():
+	return 5
