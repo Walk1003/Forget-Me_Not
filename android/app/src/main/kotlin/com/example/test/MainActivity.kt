@@ -1,4 +1,4 @@
-package com.example.forget_me_not
+package com.example.test
 
 import io.flutter.embedding.android.FlutterActivity
 
