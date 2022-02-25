@@ -25,13 +25,13 @@ class MyApp extends StatelessWidget {
          ThemeMode.dark for dark theme
       */
       debugShowCheckedModeBanner: false,
-      home: MyStatelessWidget(),
+      home: const TabControllerWidget(),
     );
   }
 }
 
-class MyStatelessWidget extends StatelessWidget {
-  const MyStatelessWidget({Key? key}) : super(key: key);
+class TabControllerWidget extends StatelessWidget {
+  const TabControllerWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class MyStatelessWidget extends StatelessWidget {
           bottom: const TabBar(
             tabs: <Widget>[
               Tab(
-                icon: Icon(Icons.cloud_outlined),
+                icon: Icon(Icons.medication),
               ),
               Tab(
                 icon: Icon(Icons.beach_access_sharp),
@@ -58,8 +58,7 @@ class MyStatelessWidget extends StatelessWidget {
         body: const TabBarView(
           children: <Widget>[
             Center(
-              child: EnterPrescriptionWidget(),
-            
+              child: PrescriptionCard(),
             ),
             Center(
               child: Text("It's rainy here"),
@@ -74,49 +73,61 @@ class MyStatelessWidget extends StatelessWidget {
   }
 }
 
-class EnterPrescriptionWidget extends StatefulWidget {
-  const EnterPrescriptionWidget({Key? key}) : super(key: key);
+class PrescriptionCard extends StatefulWidget {
+  const PrescriptionCard({Key? key}) : super(key: key);
 
   @override
-  State<EnterPrescriptionWidget> createState() => _EnterPrescriptionWidgetState();
+  _PrescriptionCardState createState() => _PrescriptionCardState();
 }
 
-class _EnterPrescriptionWidgetState extends State<EnterPrescriptionWidget> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+class _PrescriptionCardState extends State<PrescriptionCard> {
+  List<Widget> _cardList = [];
+
+  void _addCardWidget() {
+    setState(() {
+      _cardList.add(_card());
+    });
+  }
+
+  Widget _card() {
+    return Center(
+        child: Card(
+            child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+      const ListTile(
+        leading: Icon(Icons.medication_liquid_sharp),
+        title: Text('Tylenol'),
+        subtitle: Text('80mg'),
+      ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          TextButton(
+            child: const Text('2x Daily'),
+            onPressed: () {/* ... */},
+          ),
+          const SizedBox(width: 4),
+        ],
+      )
+    ])));
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          TextFormField(
-            decoration: const InputDecoration(
-              hintText: 'Enter your email',
-            ),
-            validator: (String? value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter some text';
-              }
-              return null;
-            },
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
-            child: ElevatedButton(
-              onPressed: () {
-                // Validate will return true if the form is valid, or false if
-                // the form is invalid.
-                if (_formKey.currentState!.validate()) {
-                  // Process data.
-                }
-              },
-              child: const Text('Submit'),
-            ),
-          ),
-        ],
+    return Scaffold(
+      body: Center(
+        // Center is a layout widget. It takes a single child and positions it
+        // in the middle of the parent.
+        child: ListView.builder(
+            itemCount: _cardList.length,
+            itemBuilder: (context, index) {
+              return _cardList[index];
+            }),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _addCardWidget,
+        tooltip: 'Add',
+        child: Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
