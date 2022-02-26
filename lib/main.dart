@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test/Routes/RxName.dart';
 import 'models/prescription_card.dart';
 
 void main() => runApp(const MyApp());
@@ -12,6 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'App Title',
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const TabControllerWidget(),
+        '/PrescriptionForm': (context) => const PrescriptionForm(),
+      },
       theme: ThemeData(
         brightness: Brightness.light,
         /* light theme settings */
@@ -26,7 +32,6 @@ class MyApp extends StatelessWidget {
          ThemeMode.dark for dark theme
       */
       debugShowCheckedModeBanner: false,
-      home: const TabControllerWidget(),
     );
   }
 }

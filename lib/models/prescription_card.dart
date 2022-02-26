@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:test/models/form.dart';
+import 'package:test/Routes/RxName.dart';
 
 class PrescriptionCard extends StatefulWidget {
   const PrescriptionCard({Key? key}) : super(key: key);
@@ -54,7 +54,9 @@ class _PrescriptionCardState extends State<PrescriptionCard> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          _addCardWidget();
+          //Here we bring the user to the prescription forms screen
+          Navigator.pushNamed(context, '/PrescriptionForm');
+          //_addCardWidget();
         },
         tooltip: 'Add',
         child: Icon(Icons.add),
