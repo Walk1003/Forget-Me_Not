@@ -54,10 +54,10 @@ class _RxCardState extends State<RxCard> {
         onPressed: () {
           //Here we bring the user to the prescription forms screen
           Navigator.pushNamed(context, '/FormLoop');
-          //_addCardWidget();
+          _addCardWidget();
         },
         tooltip: 'Add',
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
