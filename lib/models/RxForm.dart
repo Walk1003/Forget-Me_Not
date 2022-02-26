@@ -10,14 +10,7 @@ class RxForm extends StatefulWidget {
   }
 }
 
-// Create a corresponding State class.
-// This class holds data related to the form.
 class RxFormState extends State<RxForm> {
-  // Create a global key that uniquely identifies the Form widget
-  // and allows validation of the form.
-  //
-  // Note: This is a GlobalKey<FormState>,
-  // not a GlobalKey<MyCustomFormState>.
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -51,7 +44,7 @@ class RxFormState extends State<RxForm> {
         },
         tooltip: 'Add',
         child: const Icon(Icons.arrow_right_alt),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }

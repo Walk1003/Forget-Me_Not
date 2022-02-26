@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:test/Routes/RxName.dart';
-import 'models/prescription_card.dart';
+import 'package:test/Routes/FormLoop.dart';
+import 'models/RxCard.dart';
 
 void main() => runApp(const MyApp());
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const TabControllerWidget(),
-        '/PrescriptionForm': (context) => const PrescriptionForm(),
+        '/FormLoop': (context) => const FormLoop(),
       },
       theme: ThemeData(
         brightness: Brightness.light,
@@ -64,7 +64,7 @@ class TabControllerWidget extends StatelessWidget {
         body: const TabBarView(
           children: <Widget>[
             Center(
-              child: PrescriptionCard(),
+              child: RxCard(),
             ),
             Center(
               child: Text("Reminders Here"),

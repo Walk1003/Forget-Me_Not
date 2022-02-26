@@ -1,19 +1,19 @@
 // Create a Form widget.
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../models/prescription_form_model.dart';
+import '../models/RxForm.dart';
 
-class PrescriptionForm extends StatefulWidget {
-  const PrescriptionForm({Key? key}) : super(key: key);
+class FormLoop extends StatefulWidget {
+  const FormLoop({Key? key}) : super(key: key);
 
   @override
-  PrescriptionFormState createState() {
-    return PrescriptionFormState();
+  FormLoopState createState() {
+    return FormLoopState();
   }
 }
 
-//Form goes here, and we will send that data back to the prescription card template
-class PrescriptionFormState extends State<PrescriptionForm> {
+//Here will call the form template, loop through it, and send that data back to the prescription card template
+class FormLoopState extends State<FormLoop> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {

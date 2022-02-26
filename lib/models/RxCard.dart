@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:test/Routes/RxName.dart';
+import 'package:test/Routes/FormLoop.dart';
 
-class PrescriptionCard extends StatefulWidget {
-  const PrescriptionCard({Key? key}) : super(key: key);
+class RxCard extends StatefulWidget {
+  const RxCard({Key? key}) : super(key: key);
 
   @override
-  _PrescriptionCardState createState() => _PrescriptionCardState();
+  _RxCardState createState() => _RxCardState();
 }
 
-class _PrescriptionCardState extends State<PrescriptionCard> {
+class _RxCardState extends State<RxCard> {
   List<Widget> _cardList = [];
 
   void _addCardWidget() {
@@ -44,8 +44,6 @@ class _PrescriptionCardState extends State<PrescriptionCard> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
         child: ListView.builder(
             itemCount: _cardList.length,
             itemBuilder: (context, index) {
@@ -55,12 +53,12 @@ class _PrescriptionCardState extends State<PrescriptionCard> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           //Here we bring the user to the prescription forms screen
-          Navigator.pushNamed(context, '/PrescriptionForm');
+          Navigator.pushNamed(context, '/FormLoop');
           //_addCardWidget();
         },
         tooltip: 'Add',
         child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }
