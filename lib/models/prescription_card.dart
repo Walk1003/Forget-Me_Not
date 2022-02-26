@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:test/models/form.dart';
 
 class PrescriptionCard extends StatefulWidget {
   const PrescriptionCard({Key? key}) : super(key: key);
@@ -52,7 +53,9 @@ class _PrescriptionCardState extends State<PrescriptionCard> {
             }),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _addCardWidget,
+        onPressed: () {
+          _addCardWidget();
+        },
         tooltip: 'Add',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.

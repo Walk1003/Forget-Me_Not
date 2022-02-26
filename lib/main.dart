@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'models/prescription_card.dart';
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -36,7 +37,7 @@ class TabControllerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      initialIndex: 1,
+      initialIndex: 0,
       length: 3,
       child: Scaffold(
         appBar: AppBar(
@@ -47,10 +48,10 @@ class TabControllerWidget extends StatelessWidget {
                 icon: Icon(Icons.medication),
               ),
               Tab(
-                icon: Icon(Icons.beach_access_sharp),
+                icon: Icon(Icons.timer),
               ),
               Tab(
-                icon: Icon(Icons.brightness_5_sharp),
+                icon: Icon(Icons.warning),
               ),
             ],
           ),
@@ -61,10 +62,10 @@ class TabControllerWidget extends StatelessWidget {
               child: PrescriptionCard(),
             ),
             Center(
-              child: Text("It's rainy here"),
+              child: Text("Reminders Here"),
             ),
             Center(
-              child: Text("It's sunny here"),
+              child: Text("Warnings Here"),
             ),
           ],
         ),
@@ -72,4 +73,3 @@ class TabControllerWidget extends StatelessWidget {
     );
   }
 }
-
