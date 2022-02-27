@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:test/Routes/FormLoop.dart';
 
 class RxCard extends StatefulWidget {
   const RxCard({Key? key}) : super(key: key);
@@ -53,7 +52,7 @@ class _RxCardState extends State<RxCard> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           //Here we bring the user to the prescription forms screen
-          Navigator.pushNamed(context, '/FormLoop');
+          Navigator.pushNamed(context, '/NameForm');
           _addCardWidget();
         },
         tooltip: 'Add',

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:test/Routes/FormLoop.dart';
+import 'package:test/Forms/NameForm.dart';
 import 'models/RxCard.dart';
+import 'forms/DosageForm.dart';
+import 'forms/FrequencyForm.dart';
 
 void main() => runApp(const MyApp());
 
@@ -16,7 +18,9 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const TabControllerWidget(),
-        '/FormLoop': (context) => FormLoop(),
+        '/NameForm': (context) => const RxName(),
+        '/DosageForm': (context) => const RxDosage(),
+        '/FrequencyForm': (context) => const RxFrequency(),
       },
       theme: ThemeData(
         brightness: Brightness.light,
