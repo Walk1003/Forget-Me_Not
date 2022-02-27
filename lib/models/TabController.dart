@@ -31,6 +31,7 @@ class TabControllerWidget extends StatelessWidget {
           children: <Widget>[
             Center(
               child: RxCard(),
+              //child: Text("Click to Add a Prescription"),
             ),
             Center(
               child: Text("Reminders Here"),

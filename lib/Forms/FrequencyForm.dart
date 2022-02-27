@@ -1,5 +1,6 @@
 //Dosage Form
 import 'package:flutter/material.dart';
+import 'package:test/models/RxCard.dart';
 
 class RxFrequency extends StatefulWidget {
   const RxFrequency({Key? key}) : super(key: key);
@@ -40,7 +41,8 @@ class RxFrequencyState extends State<RxFrequency> {
           if (_formKey.currentState!.validate()) {
             count++;
             {
-              Navigator.pushNamed(context, '/');
+              //This brings us back to the prescription list screen
+              Navigator.of(context).popUntil((route) => route.isFirst);
             }
           } else {
             print("not validated");
