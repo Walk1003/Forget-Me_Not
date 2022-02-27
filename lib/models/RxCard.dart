@@ -10,15 +10,24 @@ class RxCard extends StatefulWidget {
 }
 
 class _RxCardState extends State<RxCard> {
-  List<Widget> _cardList = [];
+  // List<Widget> _cardList = [];
+  final List<String> medicines = <String>['Tylenol'];
+  final List<String> dosage = <String>['80mg'];
+  final List<String> timesPerDay = <String>['2'];
 
-  void _addCardWidget() {
+  TextEditingController medicineController = TextEditingController();
+  TextEditingController dosageController = TextEditingController();
+  TextEditingController timesPerDayController = TextEditingController();
+
+  void addItemToList() {
     setState(() {
-      _cardList.add(_card());
+      medicines.insert(0, medicineController.text);
+      dosage.insert(0, dosageController.text);
+      timesPerDay.insert(0, timesPerDayController.text);
     });
   }
 
-  Widget _card() {
+/*   Widget _card() {
     return Center(
         child: Card(
             child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
@@ -38,27 +47,65 @@ class _RxCardState extends State<RxCard> {
         ],
       )
     ])));
-  }
+  } */
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: ListView.builder(
-            itemCount: _cardList.length,
-            itemBuilder: (context, index) {
-              return _cardList[index];
-            }),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          //Here we bring the user to the prescription forms screen
-          Navigator.pushNamed(context, '/FormLoop');
-          _addCardWidget();
-        },
-        tooltip: 'Add',
-        child: const Icon(Icons.add),
-      ),
-    );
+        appBar: AppBar(
+          title: Text('Add medicine'),
+        ),
+        body: Column(children: <Widget>[
+          Padding(
+            padding: EdgeInsets.all(5),
+            child: TextField(
+              controller: medicineController,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Medicine Name',
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(5),
+            child: TextField(
+              controller: dosageController,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Medicine dosage',
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(5),
+            child: TextField(
+              controller: timesPerDayController,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Times per day',
+              ),
+            ),
+          ),
+          RaisedButton(
+            child: Text('Add'),
+            onPressed: () {
+              addItemToList();
+            },
+          ),
+          Expanded(
+              child: ListView.builder(
+                  padding: const EdgeInsets.all(8),
+                  itemCount: medicines.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                      height: 50,
+                      margin: EdgeInsets.all(2),
+                      child: Center(
+                          child: Text(
+                        '${medicines[index]} (${dosage[index]}) || ${timesPerDay[index]} times per day',
+                        style: TextStyle(fontSize: 18),
+                      )),
+                    );
+                  }))
+        ]));
   }
 }
