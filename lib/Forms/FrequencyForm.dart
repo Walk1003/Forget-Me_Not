@@ -1,6 +1,5 @@
 //Dosage Form
 import 'package:flutter/material.dart';
-import 'package:test/models/RxCard.dart';
 
 class RxFrequency extends StatefulWidget {
   const RxFrequency({Key? key}) : super(key: key);

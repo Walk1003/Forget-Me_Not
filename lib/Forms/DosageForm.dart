@@ -1,51 +1,40 @@
-//Dosage Form
 import 'package:flutter/material.dart';
 
-//#region
 class RxDosage extends StatefulWidget {
   const RxDosage({Key? key}) : super(key: key);
 
   @override
-  RxDosageState createState() => RxDosageState();
+  _RxDosageState createState() => _RxDosageState();
 }
 
-//Name Form
-class RxDosageState extends State<RxDosage> {
-  final _formKey = GlobalKey<FormState>();
+class _RxDosageState extends State<RxDosage> {
+  final textController = TextEditingController(text: "mg ");
 
-  int count = 0;
+  @override
+  void dispose() {
+    textController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Dosage"),
+        title: const Text('Dosage'),
       ),
-      body: Center(
-          child: Form(
-        key: _formKey,
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          TextFormField(
-            // The validator receives the text that the user has entered.
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter some text';
-              }
-              return null;
-            },
-          ),
-        ]),
-      )),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: TextField(
+          controller: textController,
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          //Here we loop the user through the prescription forms screens
-          if (_formKey.currentState!.validate()) {
-            count++;
-            {
-              Navigator.pushNamed(context, '/FrequencyForm');
-            }
-          } else {
-            print("not validated");
-          }
+          Navigator.pushNamed(context, '/FrequencyForm');
+          context:
+          Text(textController.text);
+
+          print("Dosage: " + textController.text);
         },
         tooltip: 'Add',
         child: const Icon(Icons.arrow_right_alt),
@@ -53,8 +42,49 @@ class RxDosageState extends State<RxDosage> {
     );
   }
 }
-//#endregion
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//this is an alternate prototype for this form we could flesh out later
 //#region
 // class RxDosage extends StatefulWidget {
 //   const RxDosage({Key? key}) : super(key: key);
