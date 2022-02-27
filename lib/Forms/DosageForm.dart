@@ -1,6 +1,7 @@
 //Dosage Form
 import 'package:flutter/material.dart';
 
+//#region
 class RxDosage extends StatefulWidget {
   const RxDosage({Key? key}) : super(key: key);
 
@@ -52,3 +53,50 @@ class RxDosageState extends State<RxDosage> {
     );
   }
 }
+//#endregion
+
+//#region
+// class RxDosage extends StatefulWidget {
+//   const RxDosage({Key? key}) : super(key: key);
+
+//   @override
+//   _RxDosageState createState() => _RxDosageState();
+// }
+
+// class _RxDosageState extends State<RxDosage> {
+//   final dosages = ['1mg', '2mg', '3mg'];
+//   String? value;
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Dosage'),
+//       ),
+//       body: Center(
+//           child: Container(
+//         alignment: Alignment.topCenter,
+//         child: DropdownButton<String>(
+//             value: value,
+//             isExpanded: true,
+//             items: dosages.map(buildMenuItem).toList(),
+//             onChanged: (value) => setState(() => this.value = value)),
+//       )),
+//       floatingActionButton: FloatingActionButton(
+//         onPressed: () {
+//           Navigator.pushNamed(context, '/FrequencyForm');
+//         },
+//         tooltip: 'Add',
+//         child: const Icon(Icons.arrow_right_alt),
+//       ),
+//     );
+//   }
+
+//   DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
+//       child: Text(
+//         item,
+//         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+//       ),
+//       value: item);
+// }
+//#Endregion
+
