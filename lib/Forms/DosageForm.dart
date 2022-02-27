@@ -27,6 +27,7 @@ class _RxDosageState extends State<RxDosage> {
         child: TextField(
           controller: textController,
         ),
+        
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

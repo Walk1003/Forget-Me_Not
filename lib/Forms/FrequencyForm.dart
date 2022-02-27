@@ -60,46 +60,49 @@ import 'package:flutter/material.dart';
 class RxFrequency extends StatefulWidget {
   const RxFrequency({Key? key}) : super(key: key);
   @override
-  _RxFrequencyState createState() {
-    return _RxFrequencyState();
-  }
+  _RxFrequencyState createState() => _RxFrequencyState();
 }
 
 class _RxFrequencyState extends State<RxFrequency> {
-  TimeOfDay selectedTime = TimeOfDay.now();
-  @override
+  TimeOfDay _time = TimeOfDay(hour: 7, minute: 15);
+
+  void _selectTime() async {
+    final TimeOfDay? newTime = await showTimePicker(
+      context: context,
+      initialTime: _time,
+      initialEntryMode: TimePickerEntryMode.input,
+    );
+    if (newTime != null) {
+      setState(() {
+        _time = newTime;
+      });
+    }
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Flutter TimePicker"),
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children: [
             ElevatedButton(
-              onPressed: () {
-                _selectTime(context);
-              },
-              child: Text("Choose Time"),
+              onPressed: _selectTime,
+              child: Text('SELECT TIME'),
             ),
-            Text("${selectedTime.hour}:${selectedTime.minute}"),
+            SizedBox(height: 8),
+            Text(
+              'Selected time: ${_time.format(context)}',
+            ),
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).popUntil((route) => route.isFirst);
+        },
+        tooltip: 'Add',
+        child: const Icon(Icons.arrow_back),
+      ),
     );
-  }
-
-  _selectTime(BuildContext context) async {
-    final TimeOfDay? timeOfDay = await showTimePicker(
-      context: context,
-      initialTime: selectedTime,
-      initialEntryMode: TimePickerEntryMode.dial,
-    );
-    if (timeOfDay != null && timeOfDay != selectedTime) {
-      setState(() {
-        selectedTime = timeOfDay;
-      });
-    }
   }
 }
