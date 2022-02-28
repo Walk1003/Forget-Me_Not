@@ -55,7 +55,7 @@ class _RxCardState extends State<RxCard> {
           _addCardWidget();
         },
         tooltip: 'Add',
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.arrow_forward),
       ),
     );
   }
