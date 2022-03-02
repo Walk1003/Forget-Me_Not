@@ -14,11 +14,12 @@ class _RxFrequencyState extends State<RxFrequency> {
 
   void _addTimeSlot() {
     setState(() {
-      _timeSlots.add(_timeSlot());
+      _timeSlots.add(_timeSlot(selectedTime));
     });
   }
 
-  Widget _timeSlot() {
+  //this method could get the selected time from the selectTime method call in the floating aciton button
+  Widget _timeSlot(TimeOfDay selectedTime) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -49,8 +50,10 @@ class _RxFrequencyState extends State<RxFrequency> {
               }),
         ),
         floatingActionButton: FloatingActionButton(
+          //here prompt the user with the clock before adding
           onPressed: () {
-            _addTimeSlot();
+            _selectTime(context);
+            //_addTimeSlot();
           },
           tooltip: 'Add',
           child: const Icon(Icons.add),
@@ -68,5 +71,7 @@ class _RxFrequencyState extends State<RxFrequency> {
         selectedTime = timeOfDay;
       });
     }
+
+    _addTimeSlot();
   }
 }
