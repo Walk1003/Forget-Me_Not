@@ -11,6 +11,7 @@ class RxFrequency extends StatefulWidget {
 class _RxFrequencyState extends State<RxFrequency> {
   TimeOfDay selectedTime = TimeOfDay.now();
   List<Widget> _timeSlots = [];
+  bool newTime = true;
 
   void _addTimeSlot() {
     setState(() {
@@ -26,7 +27,7 @@ class _RxFrequencyState extends State<RxFrequency> {
         children: <Widget>[
           ElevatedButton(
             onPressed: () {
-              _selectTime(context);
+              _selectTime(context, false);
             },
             child: Text("Choose Time"),
           ),
@@ -52,15 +53,14 @@ class _RxFrequencyState extends State<RxFrequency> {
         floatingActionButton: FloatingActionButton(
           //here prompt the user with the clock before adding
           onPressed: () {
-            _selectTime(context);
-            //_addTimeSlot();
+            _selectTime(context, true);
           },
           tooltip: 'Add',
           child: const Icon(Icons.add),
         ));
   }
 
-  _selectTime(BuildContext context) async {
+  _selectTime(BuildContext context, bool newTime) async {
     final TimeOfDay? timeOfDay = await showTimePicker(
       context: context,
       initialTime: selectedTime,
@@ -71,7 +71,8 @@ class _RxFrequencyState extends State<RxFrequency> {
         selectedTime = timeOfDay;
       });
     }
-
-    _addTimeSlot();
+    if (newTime) {
+      _addTimeSlot();
+    }
   }
 }
