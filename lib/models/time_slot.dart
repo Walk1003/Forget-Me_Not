@@ -15,7 +15,7 @@ class TimeSlot extends StatefulWidget {
 class _TimeSlotState extends State<TimeSlot> {
   TimeOfDay selectedTime = TimeOfDay.now();
   
-  late TimeSlotState manager;
+  late TimeSlotManagerState manager;
   _TimeSlotState(this.selectedTime);
 
 

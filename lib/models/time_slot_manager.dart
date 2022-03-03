@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'time_slot.dart';
 
-class TimeSlot extends StatefulWidget {
-  const TimeSlot(TimeOfDay selectedTime, {Key? key}) : super(key: key);
+class TimeSlotManager extends StatefulWidget {
+  const TimeSlotManager(TimeOfDay selectedTime, {Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => TimeSlotState();
+  State<StatefulWidget> createState() => TimeSlotManagerState();
 }
 
-class TimeSlotState extends State<TimeSlot> {
+class TimeSlotManagerState extends State<TimeSlotManager> {
   TimeOfDay selectedTime = TimeOfDay.now();
   List<Widget> _timeSlots = [];
 
@@ -34,7 +34,7 @@ class TimeSlotState extends State<TimeSlot> {
 
   void addTimeSlot() {
     setState(() {
-      _timeSlots.add(TimeSlot(selectedTime));
+      _timeSlots.add(TimeSlotManager(selectedTime));
     });
   }
 

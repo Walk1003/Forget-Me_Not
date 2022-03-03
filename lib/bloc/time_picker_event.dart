@@ -1,7 +1,7 @@
-abstract class WidgetEvent {}
+abstract class TimePickerEvent {}
 
-class AddWidget extends WidgetEvent {}
+class AddWidget extends TimePickerEvent {}
 
-class EditWidget extends WidgetEvent {}
+class EditWidget extends TimePickerEvent {}
 
-class RemoveWidget extends WidgetEvent {}
+class RemoveWidget extends TimePickerEvent {}

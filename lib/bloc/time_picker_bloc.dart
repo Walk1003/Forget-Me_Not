@@ -4,25 +4,25 @@ import 'package:test/models/time_slot_manager.dart';
 import 'time_picker_event.dart';
 
 class TimePickerBloc {
-  late TimeSlot _slot;
+  late TimeSlotManager _slot;
 
   //this controller will be used to manage the different events given by the TimeSlot
-  final _timeSlotStateController = StreamController<TimeSlot>();
+  final _timeSlotStateController = StreamController<TimeSlotManager>();
 
   //intput sink
-  StreamSink<TimeSlot> get _inTimeSlot => _timeSlotStateController.sink;
+  StreamSink<TimeSlotManager> get _inTimeSlot => _timeSlotStateController.sink;
 
   //output stream
-  Stream<TimeSlot> get timeSlot => _timeSlotStateController.stream;
+  Stream<TimeSlotManager> get timeSlot => _timeSlotStateController.stream;
 
-  final _timeSlotEventController = StreamController<WidgetEvent>();
-  Sink<WidgetEvent> get WidgetEventSink => _timeSlotEventController.sink;
+  final _timeSlotEventController = StreamController<TimePickerEvent>();
+  Sink<TimePickerEvent> get WidgetEventSink => _timeSlotEventController.sink;
 
   TimePickerBloc() {
     _timeSlotEventController.stream.listen(_mapEventToState);
   }
 
-  void _mapEventToState(WidgetEvent event) {
+  void _mapEventToState(TimePickerEvent event) {
     if (event is AddWidget) {
       //code to add a new widget
       
