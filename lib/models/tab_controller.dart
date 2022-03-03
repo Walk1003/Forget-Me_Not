@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'RxCard.dart';
+import 'rx_card.dart';
 
 class TabControllerWidget extends StatelessWidget {
   const TabControllerWidget({Key? key}) : super(key: key);
