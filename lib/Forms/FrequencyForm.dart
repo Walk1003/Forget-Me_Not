@@ -31,7 +31,8 @@ class _RxFrequencyState extends State<RxFrequency> {
             },
             child: Text("Choose Time"),
           ),
-          Text("${selectedTime.hour}:${selectedTime.minute}"),
+          Text(
+              "${selectedTime.hourOfPeriod}:${selectedTime.minute} ${selectedTime.period.toString().substring(10)}"),
         ],
       ),
     );
