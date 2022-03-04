@@ -1,54 +1,62 @@
 import 'package:flutter/material.dart';
+import 'package:test/bloc/prescription_event.dart';
+import 'package:test/models/prescription.dart';
 import 'time_slot.dart';
+import 'package:test/bloc/prescription_bloc.dart';
 
-class TimeSlotManager extends StatefulWidget {
-  const TimeSlotManager(TimeOfDay selectedTime, {Key? key}) : super(key: key);
+class TimeSlot extends StatefulWidget {
+  const TimeSlot(TimeOfDay selectedTime, {Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => TimeSlotManagerState();
+  State<StatefulWidget> createState() => TimeSlotState();
 }
 
-class TimeSlotManagerState extends State<TimeSlotManager> {
+class TimeSlotState extends State<TimeSlot> {
   TimeOfDay selectedTime = TimeOfDay.now();
+  final _bloc = Bloc();
   List<Widget> _timeSlots = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Flutter TimePicker"),
-        ),
         body: Center(
-          child: ListView.builder(
-              itemCount: _timeSlots.length,
-              itemBuilder: (context, index) {
-                return _timeSlots[index];
-              }),
+          //instead of listview builder, use a stream builder, listens from the bloc
+          child: StreamBuilder(
+            stream: _bloc.model,
+            initialData: _timeSlots.length,
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              return _timeSlots[snapshot.data];
+            },
+          ),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            _selectTime(context, true);
+            //on pressed events should typically be invoking methods from the bloc
+            _bloc.PrescriptionEventSink.add(SelectTimeEvent());
+            //_selectTime(context, true);
           },
         ));
   }
 
+  //here instead of changing state, parse this out into the bloc
   void addTimeSlot() {
     setState(() {
-      _timeSlots.add(TimeSlotManager(selectedTime));
+      
+      _timeSlots.add(TimeSlot(selectedTime));
     });
   }
 
-  _selectTime(BuildContext context, bool newTime) async {
-    final TimeOfDay? timeOfDay = await showTimePicker(
-      context: context,
-      initialTime: selectedTime,
-      initialEntryMode: TimePickerEntryMode.dial,
-    );
-    if (timeOfDay != null && timeOfDay != selectedTime) {
-      setState(() {
-        selectedTime = timeOfDay;
-      });
-    }
+  // _selectTime(BuildContext context, bool newTime) async {
+  //   final TimeOfDay? timeOfDay = await showTimePicker(
+  //     context: context,
+  //     initialTime: selectedTime,
+  //     initialEntryMode: TimePickerEntryMode.dial,
+  //   );
+  //   if (timeOfDay != null && timeOfDay != selectedTime) {
+  //     setState(() {
+  //       selectedTime = timeOfDay;
+  //     });
+  //   }
     if (newTime) {
       addTimeSlot();
     }

@@ -1,11 +1,12 @@
 //#region
 import 'package:flutter/material.dart';
+import 'package:test/bloc/prescription_bloc.dart';
 import 'package:test/models/time_slot_manager.dart';
 
 class TimeSlot extends StatefulWidget {
   TimeOfDay selectedTime;
 
-  TimeSlot(this.selectedTime);
+  TimeSlot(this.selectedTime, {Key? key}) : super(key: key);
   @override
   State<TimeSlot> createState() {
     return _TimeSlotState(selectedTime);
@@ -15,9 +16,9 @@ class TimeSlot extends StatefulWidget {
 class _TimeSlotState extends State<TimeSlot> {
   TimeOfDay selectedTime = TimeOfDay.now();
   
-  late TimeSlotManagerState manager;
+  late TimeSlotState manager;
   _TimeSlotState(this.selectedTime);
-
+  final _bloc = Bloc();
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class _TimeSlotState extends State<TimeSlot> {
         children: <Widget>[
           ElevatedButton(
             onPressed: () {
-              manager.addTimeSlot();
+
             },
             child: Text("Choose Time"),
           ),
@@ -38,5 +39,3 @@ class _TimeSlotState extends State<TimeSlot> {
     );
   }
 }
-
-//#endregion
