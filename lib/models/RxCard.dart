@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:test/Routes/FormLoop.dart';
 
 class RxCard extends StatefulWidget {
   const RxCard({Key? key}) : super(key: key);
