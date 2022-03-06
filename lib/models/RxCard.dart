@@ -25,28 +25,6 @@ class _RxCardState extends State<RxCard> {
     });
   }
 
-/*   Widget _card() {
-    return Center(
-        child: Card(
-            child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-      const ListTile(
-        leading: Icon(Icons.medication_liquid_sharp),
-        title: Text('Tylenol'),
-        subtitle: Text('80mg'),
-      ),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          TextButton(
-            child: const Text('2x Daily'),
-            onPressed: () {/* ... */},
-          ),
-          const SizedBox(width: 4),
-        ],
-      )
-    ])));
-  } */
-
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
