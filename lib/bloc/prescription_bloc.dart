@@ -27,7 +27,20 @@ class Bloc {
 
   void _mapEventToState(PrescriptionEvent event) {
     if (event is SelectTimeEvent) {
+      
+      
       //code to select time 
+      // _selectTime(BuildContext context, bool newTime) async {
+     //   final TimeOfDay? timeOfDay = await showTimePicker(
+    //     context: context,
+  //     initialTime: selectedTime,
+  //     initialEntryMode: TimePickerEntryMode.dial,
+  //   );
+  //   if (timeOfDay != null && timeOfDay != selectedTime) {
+  //     setState(() {
+  //       selectedTime = timeOfDay;
+  //     });
+  //   }
         
     }
     if (event is RemoveWidgetEvent) {
