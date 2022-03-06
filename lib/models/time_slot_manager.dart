@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:test/bloc/prescription_event.dart';
-import 'package:test/models/prescription.dart';
 import 'time_slot.dart';
 import 'package:test/bloc/prescription_bloc.dart';
 
-class TimeSlot extends StatefulWidget {
-  const TimeSlot(TimeOfDay selectedTime, {Key? key}) : super(key: key);
+class TimeSlotManager extends StatefulWidget {
+  const TimeSlotManager({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => TimeSlotState();
+  State<StatefulWidget> createState() => TimeSlotManagerState();
 }
 
-class TimeSlotState extends State<TimeSlot> {
+class TimeSlotManagerState extends State<TimeSlotManager> {
   TimeOfDay selectedTime = TimeOfDay.now();
+  List<Widget> _timeSlots = [];
   final _bloc = Bloc();
-  List<Prescription> _timeSlots = [];
 
   @override
   Widget build(BuildContext context) {
@@ -39,25 +38,25 @@ class TimeSlotState extends State<TimeSlot> {
   }
 
   //here instead of changing state, parse this out into the bloc
-  void addTimeSlot() {
-    setState(() {
-      _timeSlots.add(TimeSlot(selectedTime));
-    });
-  }
+  // void addTimeSlot() {
+  //   setState(() {
+  //     _timeSlots.add(TimeSlot(selectedTime));
+  //   });
+  // }
 
-  // _selectTime(BuildContext context, bool newTime) async {
-  //   final TimeOfDay? timeOfDay = await showTimePicker(
-  //     context: context,
-  //     initialTime: selectedTime,
-  //     initialEntryMode: TimePickerEntryMode.dial,
-  //   );
-  //   if (timeOfDay != null && timeOfDay != selectedTime) {
-  //     setState(() {
-  //       selectedTime = timeOfDay;
-  //     });
-  //   }
-    // if (newTime) {
-    //   addTimeSlot();
+  _selectTime(BuildContext context, bool newTime) async {
+    final TimeOfDay? timeOfDay = await showTimePicker(
+      context: context,
+      initialTime: selectedTime,
+      initialEntryMode: TimePickerEntryMode.dial,
+    );
+    if (timeOfDay != null && timeOfDay != selectedTime) {
+      setState(() {
+        selectedTime = timeOfDay;
+      });
+    }
+    if (newTime) {
+      _timeSlots.add(TimeSlot(selectedTime));
     }
   }
 }

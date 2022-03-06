@@ -25,7 +25,7 @@ class _RxFrequencyState extends State<RxFrequency> {
         child: StreamBuilder(
             stream: _bloc.model,
             //initial data would just be a TimePicker Widget
-            initialData: 0,
+            initialData: "",
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,

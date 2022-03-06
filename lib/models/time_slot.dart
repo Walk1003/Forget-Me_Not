@@ -5,15 +5,17 @@ import 'package:test/bloc/prescription_event.dart';
 import 'package:test/models/time_slot_manager.dart';
 
 class TimeSlot extends StatefulWidget {
-  const TimeSlot({Key? key}) : super(key: key);
+  TimeOfDay selectedTime;
+  TimeSlot(this.selectedTime);
   @override
   State<TimeSlot> createState() {
-    return _TimeSlotState();
+    return _TimeSlotState(selectedTime);
   }
 }
 
 class _TimeSlotState extends State<TimeSlot> {
-  TimeOfDay selectedTime = TimeOfDay.now();
+  TimeOfDay selectedTime;
+  _TimeSlotState(this.selectedTime);
   final _bloc = Bloc();
 
   @override
