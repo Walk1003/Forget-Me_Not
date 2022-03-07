@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test/bloc/prescription_bloc.dart';
 import 'package:test/bloc/prescription_event.dart';
-import 'package:test/models/time_slot_manager.dart';
+import 'package:test/models/time_slot.dart';
 
 class RxFrequency extends StatefulWidget {
   const RxFrequency({Key? key}) : super(key: key);
@@ -14,7 +14,6 @@ class RxFrequency extends StatefulWidget {
 class _RxFrequencyState extends State<RxFrequency> {
   final _bloc = Bloc();
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,17 +23,13 @@ class _RxFrequencyState extends State<RxFrequency> {
       body: Center(
         child: StreamBuilder(
             stream: _bloc.model,
-            //initial data would just be a TimePicker Widget
             initialData: "",
             builder: (BuildContext context, AsyncSnapshot snapshot) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: _bloc.PrescriptionEventSink.add(AddWidget()),
-              );
+              return Column(children: <Widget>[TimeSlot(snapshot.data)]);
             }),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => _bloc.PrescriptionEventSink.add(AddWidget()),
+        onPressed: (() => _bloc.PrescriptionEventSink.add(AddWidgetEvent())),
         tooltip: 'Add',
         child: const Icon(Icons.add),
       ),
