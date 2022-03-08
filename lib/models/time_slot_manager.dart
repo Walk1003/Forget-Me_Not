@@ -37,13 +37,6 @@ class TimeSlotManagerState extends State<TimeSlotManager> {
         ));
   }
 
-  //here instead of changing state, parse this out into the bloc
-  // void addTimeSlot() {
-  //   setState(() {
-  //     _timeSlots.add(TimeSlot(selectedTime));
-  //   });
-  // }
-
   _selectTime(BuildContext context, bool newTime) async {
     final TimeOfDay? timeOfDay = await showTimePicker(
       context: context,
@@ -56,7 +49,9 @@ class TimeSlotManagerState extends State<TimeSlotManager> {
       });
     }
     if (newTime) {
-      _timeSlots.add(TimeSlot(selectedTime));
+      setState(() {
+        _timeSlots.add(TimeSlot(selectedTime));
+      });
     }
   }
 }
