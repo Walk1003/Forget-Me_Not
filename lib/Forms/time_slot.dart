@@ -15,9 +15,6 @@ class TimeSlotState extends State<TimeSlot> {
 
   TimeSlotState(this.selectedTime);
   
-  
-  
-  
   _selectTime() async {
     final TimeOfDay? timeOfDay = await showTimePicker(
       context: context,

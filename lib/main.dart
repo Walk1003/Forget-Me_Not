@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:test/Forms/NameForm.dart';
-import 'forms/DosageForm.dart';
-import 'forms/FrequencyForm.dart';
-import 'models/TabController.dart';
+import 'package:test/Forms/name_form.dart';
+import 'forms/dosage_form.dart';
+import 'forms/frequency_form.dart';
+import 'models/tab_controller.dart';
 
 void main() => runApp(const MyApp());
 

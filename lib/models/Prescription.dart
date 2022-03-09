@@ -1,7 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import '../Forms/DosageForm.dart';
-import '../Forms/FrequencyForm.dart';
-import '../Forms/NameForm.dart';
 
 class Prescription {
   late String rxName;

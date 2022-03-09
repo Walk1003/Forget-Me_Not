@@ -62,46 +62,6 @@ class _RxDosageState extends State<RxDosage> {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //this is an alternate prototype for this form we could flesh out later
 //#region
 // class RxDosage extends StatefulWidget {
