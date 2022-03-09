@@ -11,32 +11,6 @@ class RxFrequency extends StatefulWidget {
 class _RxFrequencyState extends State<RxFrequency> {
   TimeOfDay selectedTime = TimeOfDay.now();
   List<Widget> _timeSlots = [];
-  bool newTime = true;
-
-  void _addTimeSlot() {
-    setState(() {
-      _timeSlots.add(TimeSlot(selectedTime));
-    });
-  }
-
-  //this method could get the selected time from the selectTime method call in the floating aciton button
-  Widget _timeSlot(TimeOfDay selectedTime) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          ElevatedButton(
-            onPressed: () {
-              _selectTime(context, false);
-            },
-            child: Text("Choose Time"),
-          ),
-          Text(
-              "${selectedTime.hourOfPeriod}:${selectedTime.minute} ${selectedTime.period.toString().substring(10)}"),
-        ],
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +47,9 @@ class _RxFrequencyState extends State<RxFrequency> {
       });
     }
     if (newTime) {
-      _addTimeSlot();
+      setState(() {
+        _timeSlots.add(TimeSlot(selectedTime));
+      });
     }
   }
 }
