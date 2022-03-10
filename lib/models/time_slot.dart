@@ -1,4 +1,3 @@
-//#region
 import 'package:flutter/material.dart';
 import 'package:test/bloc/prescription_bloc.dart';
 import 'package:test/bloc/prescription_event.dart';

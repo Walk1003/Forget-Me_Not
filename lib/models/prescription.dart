@@ -1,12 +1,9 @@
-import 'package:test/models/time_slot.dart';
-
 class Prescription {
   //fields
   late String rxName;
   late String rxDosage;
   late List<String> rxFrequency;
   late String rxTime;
-  late TimeSlot timeSlot;
 
   String get name {
     return rxName;
@@ -22,10 +19,6 @@ class Prescription {
 
   String get time {
     return rxTime;
-  }
-
-  TimeSlot get slot {
-    return timeSlot;
   }
 
   Prescription();

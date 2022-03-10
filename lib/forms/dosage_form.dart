@@ -27,15 +27,12 @@ class _RxDosageState extends State<RxDosage> {
         child: TextField(
           controller: textController,
         ),
-        
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pushNamed(context, '/FrequencyForm');
           context:
           Text(textController.text);
-
-          print("Dosage: " + textController.text);
         },
         tooltip: 'Add',
         child: const Icon(Icons.arrow_right_alt),
