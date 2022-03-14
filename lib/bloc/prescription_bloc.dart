@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:test/models/prescription.dart';
-import 'package:test/models/time_slot_manager.dart';
 
 import 'prescription_event.dart';
 
@@ -27,21 +26,19 @@ class Bloc {
 
   void _mapEventToState(PrescriptionEvent event) {
     if (event is SelectTimeEvent) {
-      
-      
-      //code to select time 
+      //code to select time
       // _selectTime(BuildContext context, bool newTime) async {
-     //   final TimeOfDay? timeOfDay = await showTimePicker(
-    //     context: context,
-  //     initialTime: selectedTime,
-  //     initialEntryMode: TimePickerEntryMode.dial,
-  //   );
-  //   if (timeOfDay != null && timeOfDay != selectedTime) {
-  //     setState(() {
-  //       selectedTime = timeOfDay;
-  //     });
-  //   }
-        
+      //   final TimeOfDay? timeOfDay = await showTimePicker(
+      //     context: context,
+      //     initialTime: selectedTime,
+      //     initialEntryMode: TimePickerEntryMode.dial,
+      //   );
+      //   if (timeOfDay != null && timeOfDay != selectedTime) {
+      //     setState(() {
+      //       selectedTime = timeOfDay;
+      //     });
+      //   }
+
     }
     if (event is RemoveWidgetEvent) {
       //code to remove widget

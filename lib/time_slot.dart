@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test/bloc/prescription_bloc.dart';
 import 'package:test/bloc/prescription_event.dart';
-import 'package:test/models/time_slot_manager.dart';
 
 class TimeSlot extends StatefulWidget {
   TimeOfDay selectedTime;

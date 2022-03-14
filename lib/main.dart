@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'forms/dosage_form.dart';
 import 'forms/name_form.dart';
 import 'forms/frequency_form.dart';
-import 'models/tab_controller.dart';
+import 'tab_controller.dart';
 
 void main() => runApp(const MyApp());
 

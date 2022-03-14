@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test/bloc/prescription_bloc.dart';
 import 'package:test/bloc/prescription_event.dart';
-import 'package:test/models/time_slot.dart';
+import 'package:test/time_slot.dart';
 
 class RxFrequency extends StatefulWidget {
   const RxFrequency({Key? key}) : super(key: key);
